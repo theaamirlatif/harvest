@@ -34,16 +34,13 @@ const timeFilters = ["1 Week", "1 Month", "6 Month", "1 Year"];
 const BarChart = () => {
     const [selectedFilter, setSelectedFilter] = useState("6 Month");
 
-    // For simplicity, we're not changing data on filter change here
-    // You can implement filtering logic depending on your real data
-
     const data = {
         labels: months,
         datasets: [
             {
                 label: "New Client Added",
                 data: dataPerMonth,
-                backgroundColor: "#2563EB", // Blue color for bars
+                backgroundColor: "#2563EB", 
             },
         ],
     };
@@ -90,9 +87,9 @@ const BarChart = () => {
                         <button
                             key={filter}
                             onClick={() => setSelectedFilter(filter)}
-                            className={`px-3 py-1 rounded text-sm font-semibold border ${selectedFilter === filter
-                                    ? "bg-blue-100 text-blue-700 border-blue-300"
-                                    : "bg-white text-gray-600 border-gray-300"
+                            className={`text-sm px-4 py-2.5 rounded-8 font-regular transition hover:cursor-pointer ${selectedFilter === filter
+                                    ? "bg-[#F1F1FE]"
+                                    : "bg-white"
                                 }`}
                         >
                             {filter}

@@ -1,4 +1,6 @@
+import { Activity, Cloud, Settings, Wifi } from "@components/Global/Icon";
 import { useState } from "react";
+import { ReactSVG } from "react-svg";
 
 const summaryCards = [
   {
@@ -6,17 +8,7 @@ const summaryCards = [
     value: 24,
     percent: 4.3,
     icon: (
-      <svg
-        className="w-6 h-6 text-blue-400"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        viewBox="0 0 24 24"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M3 8h18M3 16h18M9 8v8M15 8v8"></path>
-      </svg>
+      <ReactSVG src={Settings} />
     ),
   },
   {
@@ -25,18 +17,7 @@ const summaryCards = [
     percent: 96,
     percentLabel: "operational",
     icon: (
-      <svg
-        className="w-6 h-6 text-green-400"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        viewBox="0 0 24 24"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M8 12l2 2 4-4" />
-      </svg>
+      <ReactSVG src={Activity} />
     ),
   },
   {
@@ -44,19 +25,7 @@ const summaryCards = [
     value: 3,
     percentLabel: "Needs attention",
     icon: (
-      <svg
-        className="w-6 h-6 text-red-400"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        viewBox="0 0 24 24"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <line x1="15" y1="9" x2="9" y2="15" />
-        <line x1="9" y1="9" x2="15" y2="15" />
-      </svg>
+      <ReactSVG src={Wifi} />
     ),
   },
   {
@@ -64,18 +33,7 @@ const summaryCards = [
     value: 5,
     percentLabel: "Available for setup",
     icon: (
-      <svg
-        className="w-6 h-6 text-yellow-400"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        viewBox="0 0 24 24"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <rect x="3" y="4" width="18" height="16" rx="2" ry="2" />
-        <line x1="3" y1="10" x2="21" y2="10" />
-      </svg>
+      <ReactSVG src={Cloud} />
     ),
   },
 ];
@@ -119,7 +77,6 @@ export default function FacilityManagement() {
   const [activeTab, setActiveTab] = useState("Facilities");
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Filter facilities by search term (case-insensitive)
   const filteredFacilities = facilitiesData.filter(
     (facility) =>
       facility.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -130,52 +87,50 @@ export default function FacilityManagement() {
 
   return (
     <div className="w-full">
-      {/* Summary cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        {summaryCards.map(({ title, value, percent, percentLabel, icon }, idx) => (
-          <div
-            key={idx}
-            className=" gap-4 bg-white p-6 rounded-3xl "
-          >
-            <div>{icon}</div>
-            <div>
-              <div className="text-sm text-gray-500">{title}</div>
-              <div className="flex items-center gap-2">
-                <div className="text-2xl font-semibold">{value}</div>
-                {percent !== undefined && (
-                  <div className="text-xs text-green-600 font-semibold">
-                    {percent}
-                    {percentLabel ? `% ${percentLabel}` : "%"}
-                  </div>
-                )}
-                {percentLabel && percent === undefined && (
-                  <div className="text-xs text-yellow-600 font-semibold">{percentLabel}</div>
-                )}
-
+        {summaryCards.map(
+          ({ title, value, percent, percentLabel, icon }, idx) => (
+            <div key={idx} className=" gap-4 bg-white p-6 rounded-3xl ">
+              <div>{icon}</div>
+              <div>
+                <div className="text-sm text-gray-500">{title}</div>
+                <div className="flex items-center gap-2">
+                  <div className="text-2xl font-semibold">{value}</div>
+                  {percent !== undefined && (
+                    <div className="text-xs text-green-600 font-semibold">
+                      {percent}
+                      {percentLabel ? `% ${percentLabel}` : "%"}
+                    </div>
+                  )}
+                  {percentLabel && percent === undefined && (
+                    <div className="text-xs text-yellow-600 font-semibold">
+                      {percentLabel}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          )
+        )}
       </div>
 
-      {/* Tabs */}
       <div className="bg-white p-4 rounded-3xl">
         <div className="border-b border-gray-300 mb-4 flex gap-6">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`py-2 text-sm font-semibold ${activeTab === tab
-                ? "border-b-2 border-blue-600 text-blue-600"
-                : "text-gray-500 hover:text-blue-600"
-                }`}
+              className={`py-2 text-sm font-semibold ${
+                activeTab === tab
+                  ? "border-b-2 border-blue-600 text-blue-600"
+                  : "text-gray-500 hover:text-blue-600"
+              }`}
             >
               {tab}
             </button>
           ))}
         </div>
 
-        {/* Search and Add Facility button */}
         {activeTab === "Facilities" && (
           <>
             <div className="flex justify-between flex-wrap items-center mb-4 gap-2">
@@ -191,7 +146,6 @@ export default function FacilityManagement() {
               </button>
             </div>
 
-            {/* Facilities table */}
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-left text-sm">
                 <thead>
@@ -206,37 +160,44 @@ export default function FacilityManagement() {
                 <tbody>
                   {filteredFacilities.length === 0 ? (
                     <tr>
-                      <td colSpan="5" className="py-4 text-center text-gray-500">
+                      <td
+                        colSpan="5"
+                        className="py-4 text-center text-gray-500"
+                      >
                         No facilities found.
                       </td>
                     </tr>
                   ) : (
-                    filteredFacilities.map(({ name, location, assignedTo, billingStatus }, i) => (
-                      <tr
-                        key={i}
-                        className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
-                      >
-                        <td className="py-3 px-4">{name}</td>
-                        <td className="py-3 px-4">{location}</td>
-                        <td className="py-3 px-4">{assignedTo}</td>
-                        <td className="py-3 px-4">
-                          <span
-                            className={`px-3 py-1 rounded-full text-xs font-semibold ${billingColors[billingStatus] || "bg-gray-100 text-gray-700"
+                    filteredFacilities.map(
+                      ({ name, location, assignedTo, billingStatus }, i) => (
+                        <tr
+                          key={i}
+                          className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
+                        >
+                          <td className="py-3 px-4">{name}</td>
+                          <td className="py-3 px-4">{location}</td>
+                          <td className="py-3 px-4">{assignedTo}</td>
+                          <td className="py-3 px-4">
+                            <span
+                              className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                                billingColors[billingStatus] ||
+                                "bg-gray-100 text-gray-700"
                               }`}
-                          >
-                            {billingStatus}
-                          </span>
-                        </td>
-                        <td className="py-3 px-4 flex gap-2">
-                          <button className="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs hover:bg-blue-200 transition">
-                            View
-                          </button>
-                          <button className="border border-gray-300 px-3 py-1 rounded-md text-xs hover:bg-gray-100 transition">
-                            Edit
-                          </button>
-                        </td>
-                      </tr>
-                    ))
+                            >
+                              {billingStatus}
+                            </span>
+                          </td>
+                          <td className="py-3 px-4 flex gap-2">
+                            <button className="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs hover:bg-blue-200 transition">
+                              View
+                            </button>
+                            <button className="border border-gray-300 px-3 py-1 rounded-md text-xs hover:bg-gray-100 transition">
+                              Edit
+                            </button>
+                          </td>
+                        </tr>
+                      )
+                    )
                   )}
                 </tbody>
               </table>
@@ -246,11 +207,9 @@ export default function FacilityManagement() {
 
         {activeTab === "Hardware Devices" && (
           <div className="text-gray-500 text-center py-12">
-            {/* You can replace this with your Hardware Devices content */}
             Hardware Devices content goes here.
           </div>
         )}
-
       </div>
     </div>
   );

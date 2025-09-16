@@ -1,5 +1,6 @@
+import { DocIcon, Download, FileIcon, Trash } from "@components/Global/Icon";
 import { useState } from "react";
-import { AiOutlineCloudUpload, AiOutlineDownload, AiOutlineDelete } from "react-icons/ai";
+import { ReactSVG } from "react-svg";
 
 const documentsData = [
   {
@@ -32,9 +33,9 @@ const documentsData = [
   },
 ];
 
-const fileTypeColors = {
-  pdf: "bg-red-600",
-  doc: "bg-blue-600",
+const fileTypeIcons: Record<string, string> = {
+  pdf: FileIcon,
+  doc: DocIcon,
 };
 
 const Documents: React.FC = () => {
@@ -49,9 +50,8 @@ const Documents: React.FC = () => {
 
   return (
     <div className="w-full flex flex-col gap-5">
-      {/* Upload Area */}
-      <div className=" rounded-3xl bg-white p-10 flex flex-col items-center justify-center text-center cursor-pointer hover:border-blue-600 transition">
-        <AiOutlineCloudUpload size={40} className="text-gray-400 mb-2" />
+      <div className="rounded-3xl bg-white p-10 flex flex-col items-center justify-center text-center cursor-pointer hover:border-blue-600 transition">
+        <ReactSVG src={FileIcon} />
         <p className="text-sm text-blue-600 font-semibold cursor-pointer">
           Click to upload
         </p>
@@ -62,15 +62,14 @@ const Documents: React.FC = () => {
         </p>
       </div>
 
-      {/* Document Library Section */}
       <div className="bg-white rounded-3xl p-6">
         <p className="font-semibold text-lg">Document Library</p>
         <p className="text-sm text-gray-500">
-          Monitor, manage, and control all facility systems & hardware in one place.
+          Monitor, manage, and control all facility systems & hardware in one
+          place.
         </p>
 
-        {/* Search Input */}
-        <div className="flex justify-end">
+        <div className="flex justify-end mb-3">
           <input
             type="text"
             placeholder="Search Document"
@@ -80,7 +79,6 @@ const Documents: React.FC = () => {
           />
         </div>
 
-        {/* Documents Table */}
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm">
             <thead>
@@ -100,38 +98,36 @@ const Documents: React.FC = () => {
                   </td>
                 </tr>
               ) : (
-                filteredDocuments.map(({ title, type, uploadDate, uploadBy, fileType }, i) => (
-                  <tr
-                    key={i}
-                    className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
-                  >
-                    <td className="py-3 px-4">{title}</td>
-                    <td className="py-3 px-4">{type}</td>
-                    <td className="py-3 px-4 flex items-center gap-2">
-                      <span
-                        className={`inline-block text-white text-xs font-bold px-2 py-1 rounded ${fileTypeColors[fileType]}`}
-                      >
-                        {fileType.toUpperCase()}
-                      </span>
-                      {uploadDate}
-                    </td>
-                    <td className="py-3 px-4">{uploadBy}</td>
-                    <td className="py-3 px-4 flex gap-3">
-                      <button
-                        aria-label="Download Document"
-                        className="text-blue-600 hover:text-blue-800"
-                      >
-                        <AiOutlineDownload size={20} />
-                      </button>
-                      <button
-                        aria-label="Delete Document"
-                        className="text-red-600 hover:text-red-800"
-                      >
-                        <AiOutlineDelete size={20} />
-                      </button>
-                    </td>
-                  </tr>
-                ))
+                filteredDocuments.map(
+                  ({ title, type, uploadDate, uploadBy, fileType }, i) => (
+                    <tr
+                      key={i}
+                      className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
+                    >
+                      <td className="py-3 px-4">{title}</td>
+                      <td className="py-3 px-4">{type}</td>
+                      <td className="py-3 px-4 flex items-center gap-2">
+                        <ReactSVG src={fileTypeIcons[fileType]} />
+                        {uploadDate}
+                      </td>
+                      <td className="py-3 px-4">{uploadBy}</td>
+                      <td className="py-3 px-4 flex gap-3">
+                        <button
+                          aria-label="Download Document"
+                          className="text-blue-600 hover:text-blue-800"
+                        >
+                          <ReactSVG src={Download} />
+                        </button>
+                        <button
+                          aria-label="Delete Document"
+                          className="text-red-600 hover:text-red-800"
+                        >
+                          <ReactSVG src={Trash} />
+                        </button>
+                      </td>
+                    </tr>
+                  )
+                )
               )}
             </tbody>
           </table>

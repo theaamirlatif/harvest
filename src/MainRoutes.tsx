@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
-import AdminLayout from "./components/Admin/Layout";
+import AdminLayout from "./components/Admin/Layout/AdminLayout";
 import HomePage from "./Pages/Admin/HomePage";
 import ClientManagmentPage from "./Pages/Admin/ClientManagmentPage";
 import MaintanaceSchedulingPage from "./Pages/Admin/MaintanaceSchedulingPage";

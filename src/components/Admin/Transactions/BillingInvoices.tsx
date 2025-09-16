@@ -1,5 +1,7 @@
+import { Download, Trash } from "@components/Global/Icon";
 import { useState } from "react";
 import { AiOutlineDownload, AiOutlineDelete } from "react-icons/ai";
+import { ReactSVG } from "react-svg";
 
 const invoicesData = [
   {
@@ -57,7 +59,7 @@ const BillingInvoices = () => {
 
   return (
     <div className="w-full p-6 bg-white rounded-3xl">
-      {/* Header */}
+
       <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-4">
         <p className="text-lg font-semibold">All Invoices</p>
         <div className="flex flex-wrap gap-4 w-full md:w-auto">
@@ -74,7 +76,6 @@ const BillingInvoices = () => {
         </div>
       </div>
 
-      {/* Table */}
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm">
           <thead>
@@ -123,13 +124,13 @@ const BillingInvoices = () => {
                         aria-label="Download Invoice"
                         className="text-blue-600 hover:text-blue-800"
                       >
-                        <AiOutlineDownload size={20} />
+                        <ReactSVG src={Download} />
                       </button>
                       <button
                         aria-label="Delete Invoice"
                         className="text-red-600 hover:text-red-800"
                       >
-                        <AiOutlineDelete size={20} />
+                        <ReactSVG src={Trash} />
                       </button>
                     </td>
                   </tr>
@@ -140,7 +141,6 @@ const BillingInvoices = () => {
         </table>
       </div>
 
-      {/* Pagination */}
       <div className="flex flex-wrap justify-between items-center mt-6 text-gray-500 text-sm">
         <p>Showing 1-4 of 50 results</p>
         <div className="flex gap-2">

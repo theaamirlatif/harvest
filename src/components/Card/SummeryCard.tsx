@@ -1,27 +1,30 @@
+import { Activity, Clock, Settings, Users } from "@components/Global/Icon";
+import { ReactSVG } from "react-svg";
+
 const summaryData = [
   {
     title: "Total Clients",
     value: 142,
     percent: "+4.3%",
-    icon: "👥",
+    icon: <ReactSVG src={Users} />,
   },
   {
     title: "Active Systems",
     value: 118,
     percent: "+4.3%",
-    icon: "📈",
+    icon: <ReactSVG src={Activity} />,
   },
   {
     title: "Unassigned Facilities",
     value: 24,
     percent: "+4.3%",
-    icon: "🏢",
+    icon: <ReactSVG src={Settings} />,
   },
   {
     title: "Pending Requests",
     value: 5,
     percent: "+4.3%",
-    icon: "⏳",
+    icon: <ReactSVG src={Clock} />,
   },
 ];
 

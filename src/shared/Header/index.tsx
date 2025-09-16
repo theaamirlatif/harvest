@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ setIsSidebarOpen }) => {
   const navigate = useNavigate();
 
   return (
-    <header className="min-h-[90px] fixed lg:pr-3 left-0 bg-[#F2F2F2] lg:left-[280px] rounded-tr-3xl right-0 top-0 z-30">
+    <header className="min-h-[90px] fixed lg:pr-3 left-0 bg-[#F2F2F2] lg:left-[280px] lg:rounded-tr-3xl rounded-t-3xl right-0 top-0 z-30">
       <div className="rounded-[20px]  p-3 lg:mx-4 mx-2 my-3 bg-white flex justify-between items-center flex-wrap sm:flex-nowrap shadow-sm">
         <div className="flex items-center gap-3">
           <div className="lg:hidden block cursor-pointer" onClick={() => setIsSidebarOpen(true)}>

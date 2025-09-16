@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Khula:wght@300;400;600;700;800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+.font-khula {
+  font-family: "Khula", sans-serif;
+}
+
+.font-roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: #000;
+  font-family: "Roboto", sans-serif;
+}
+.container{
+  max-width: 1260px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+table tbody tr td {
+  white-space: nowrap;
+}
+
+@theme {
+  --color-primary: #ffffff;
+  --color-secondary: #000000;
+  --color-border-black-10: #0000001a;
+  --color-border-black-20: #00000033;
+  --color-border-gray: #DDDDDD;
+  --color-border-gray-80: #252525CC;
+  --color-border-white-20: #ffffff33;
+  --color-border-green-20: #556b2f;
+  --color-green: #556b2f;
+  --color-dark-grey: #252525;
+  --color-bg: #f6f4ed;
+  --color-bg-yellow: #FDC700;
+  --color-bg-brown: #8B6A3A;
+  --color-bg-golden: #574E35;
+  --color-bg-light-brown: #FBF7EA;
+  --color-bg-blue: #1F2937;
+  --color-bg-light-gray: #FAFAFA;
+  --color-bg-light-skin: #E8DDC1;
+
+  /* border radius */
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-10: 10px;
+  --radius-11: 11px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-20: 20px;
+}
+
+
+
+h1 {
+  font-size: 54px;
+  font-weight: 600;
+  font-family: "Khula", sans-serif;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #000000;
+  font-family: "Khula", sans-serif;
+}
+
+h3 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #252525;
+  font-family: "Khula", sans-serif;
+}
+h4 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #252525;
+  font-family: 'Khula', sans-serif;
+}
+h5 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #252525;
+  font-family: "Roboto", sans-serif;
+}
+
+.bg-wrapper{
+  background-color: white;
+  border: 1px solid #D9D9D9;
+  border-radius: 10px;
+  padding: 16px;
+}
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+@media (max-width: 1024px) and (min-width:767) {
+  h1 {
+    font-size: 42px;
+  }
+  h2 {
+    font-size: 32px;
+  }
+  h3 {
+    font-size: 32px;
+  }
+  p{
+  font-size: 15px;
+  font-weight: 400;
+}
+}
+
+
+@media (max-width: 768px) {
+  p{
+  font-size: 14px;
+  font-weight: 400;
+}
+  h1 {
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  h3 {
+    font-size: 24px;
+  }
+}
+/* product gallery */
+.image-gallery-thumbnail.active {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.image-gallery-thumbnail:hover {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.image-gallery-thumbnail:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* loginbutton */
+.login-button {
+  background-color: #111111;
+  display: inline-block;
+  color: #fff;
+  padding: 13px 21px;
+  border-radius: 100px;
+  text-decoration: none;
+  border: 1px solid #ffffff;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.login-button .log-inner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  padding: 0 0 0 26px;
+  transition: padding 0.5s;
+}
+
+.login-button .log-inner img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: left 0.5s, filter 0.5s;
+}
+
+.login-button .log-inner span {
+  position: relative;
+  z-index: 1;
+}
+
+.login-button:hover {
+  background-color: #fff;
+  color: #111111;
+  border: 1px solid #111111 !important;
+}
+
+.login-button:hover .log-inner {
+  padding: 0 26px 0 0;
+}
+
+.login-button:hover .log-inner img {
+  left: 76%;
+  filter: invert(1);
+}
+
